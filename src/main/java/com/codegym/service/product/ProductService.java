@@ -30,7 +30,11 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(Long id) throws NotFoundException {
-        return productRepository.findOne(id);
+        Product product = productRepository.findOne(id);
+        if (product != null) {
+            return product;
+        }
+        else throw new NotFoundException();
     }
 
     @Override

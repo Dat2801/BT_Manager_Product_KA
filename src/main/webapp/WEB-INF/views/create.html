@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Create</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <head th:replace="/layout :: head"></head>
 <!--<a th:href="@{/products}">Back To List</a>-->
-<form action="/products">
-    <input type="submit" value="Back To List">
-</form>
+<a th:href="@{/products}" role="button" class="btn btn-warning">Back To List</a>
 <body>
 <h1>Form create</h1>
 <form id="form" th:object="${p}" method="post">
@@ -42,7 +43,7 @@
         </select>
     </div>
     <td></td>
-    <button type="submit">Create</button>
+    <button class="btn btn-primary">Create</button>
 </form>
 </body>
 <footer th:replace="/layout :: footer"></footer>

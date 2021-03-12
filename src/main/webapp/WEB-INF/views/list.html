@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
     <head th:replace="/layout :: head">
     </head>
 <body>
-<form action="/products/create">
-    <input type="submit" value="Add New Product">
-</form>
+<a th:href="@{/products/create}" role="button" class="btn btn-success">Add New Product</a><br>
+
 <!--<form method="post">-->
 <!--    Search by first name:-->
 <!--    <input name="search" type="text"/>-->
@@ -20,14 +22,12 @@
             <option th:value="${category.id}" th:text="${category.name}"></option>
         </th:block>
     </select>
-    <input type="submit" value="search">
+<!--    <input type="submit" value="search">-->
+    <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Search</button>
+    <br>
 </form>
-<form action="/products/top5Price">
-    <input type="submit" value="Top 5 by Price">
-</form>
-<form action="/products/top5New">
-    <input type="submit" value="Top 5 by New">
-</form>
+<a th:href="@{/products/top5New}" role="button" class="btn btn-warning">Top 5 By New</a>
+<a th:href="@{/products/top5Price}" type="button" class="btn btn-secondary">Top 5 By Price</a>
 <table id="customers">
     <tr>
         <th>Name</th>
@@ -47,16 +47,16 @@
             <td th:text="${p.dateTime}"></td>
             <td th:text="${p.quantity}"></td>
             <td th:text="${p.category.name}"></td>
-            <td><a th:href="@{'/products/edit/'+${p.id}}">Edit</a></td>
-            <td><a th:href="@{'/products/delete/'+${p.id}}"
+            <td><a th:href="@{'/products/edit/'+${p.id}}" role="button" class="btn btn-primary">Edit</a></td>
+            <td><a th:href="@{'/products/delete/'+${p.id}}" role="button" class="btn btn-danger"
                    onclick="return confirm('Ban co muon xoa khong?');">Delete</a></td>
         </tr>
     </th:block>
 </table>
 <div>
-    <a th:href="@{'/products'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+    <a th:href="@{'/products'(page=${products.number - 1})}" role="button" class="btn btn-primary" th:if="${products.hasPrevious()}">Previous</a>
     <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
-    <a th:href="@{'/products'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+    <a th:href="@{'/products'(page=${products.number + 1})}" role="button" class="btn btn-primary" th:if="${products.hasNext()}">Next</a>
 </div>
 </body>
 <footer th:replace="/layout :: footer"></footer>
