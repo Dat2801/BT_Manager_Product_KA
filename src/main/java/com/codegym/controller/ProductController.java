@@ -44,7 +44,7 @@ public class ProductController {
 //        return modelAndView;
 //
     @GetMapping("")
-    public ModelAndView showPage(@PageableDefault(size = 6) Pageable pageable) {
+    public ModelAndView showPage(@PageableDefault(size = 5) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("list");
         Page<Product> productPage = productService.findALl(pageable);
         modelAndView.addObject("products", productPage);

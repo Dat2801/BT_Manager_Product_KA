@@ -9,8 +9,6 @@
     <head th:replace="/layout :: head">
     </head>
 <body>
-<a th:href="@{/products/create}" role="button" class="btn btn-success">Add New Product</a><br>
-
 <!--<form method="post">-->
 <!--    Search by first name:-->
 <!--    <input name="search" type="text"/>-->
@@ -26,6 +24,8 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Search</button>
     <br>
 </form>
+<br>
+<a th:href="@{/products/create}" role="button" class="btn btn-info">Add New Product</a>
 <a th:href="@{/products/top5New}" role="button" class="btn btn-warning">Top 5 By New</a>
 <a th:href="@{/products/top5Price}" type="button" class="btn btn-secondary">Top 5 By Price</a>
 <table id="customers">
