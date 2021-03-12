@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head th:replace="/layout :: head">
+</head>
+<form action="/products">
+    <input type="submit" value="Back To List">
+</form>
+<body>
+<table id="customers">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="p: ${productTop5}">
+        <tr>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.description}"></td>
+            <td th:text="${p.dateTime}"></td>
+            <td th:text="${p.quantity}"></td>
+            <td th:text="${p.category}"></td>
+            <td><a th:href="@{'/products/edit/'+${p.id}}">Edit</a></td>
+            <td><a th:href="@{'/products/delete/'+${p.id}}"
+                   onclick="return confirm('Ban co muon xoa khong?');">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+<footer th:replace="/layout :: footer"></footer>
+</html>
